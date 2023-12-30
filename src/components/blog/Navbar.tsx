@@ -19,16 +19,24 @@ export const Navbar = () => {
   const session = true;
   const isAdmin = true;
 
-  useEffect(()=>{
+  useEffect(() => {
     setOpen(false);
-  },[route]);
+  }, [route]);
 
   return (
-    <div className="flex justify-between items-center mt-2 z-50">
-      <div className="text-2xl font-bold">Hippo</div>
-      <div className={open?'flex flex-col gap-4 absolute top-0 left-0 mx-auto w-full h-screen bg-gray-800':'hidden md:flex gap-4'}>
+    <div className="w-full flex justify-between items-center mt-2 z-50">
+      <div className="text-2xl font-bold">
+        <Link href="/">Hippo</Link>
+      </div>
+      <div
+        className={
+          open
+            ? "flex flex-col gap-4 absolute top-0 left-0 mx-auto w-full h-screen bg-gray-800"
+            : "hidden md:flex gap-4"
+        }
+      >
         <div className="md:hidden mt-2 px-2 flex justify-end w-full">
-          <button onClick={()=>setOpen(false)}>
+          <button onClick={() => setOpen(false)}>
             <Cross1Icon className="w-6 h-6 text-white" />
           </button>
         </div>

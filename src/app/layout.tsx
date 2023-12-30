@@ -20,9 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className={`${inter.className} bg-gray-900 text-white`}
+        className={`${inter.className} bg-[#0c0b22] text-white`}
       >
-        <main className="container mx-auto relative">
+        <main className="container lg:px-24 mx-auto relative flex flex-col justify-between items-center min-h-screen">
           <Navbar />
           {children}
           <Footer />
