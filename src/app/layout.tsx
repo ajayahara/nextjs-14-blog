@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className={`${inter.className} bg-[#0c0b22] text-white`}
+        className={`${inter.className} bg-primary text-white`}
       >
         <main className="container lg:px-24 mx-auto relative flex flex-col justify-between items-center min-h-screen">
           <Navbar />

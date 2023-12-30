@@ -5,7 +5,7 @@ export const metadata = {
   description: "About description",
 };
 
-const AboutPage = () => {
+const About = () => {
   return (
     <div className="w-full flex justify-between items-center">
       <div className="w-full flex flex-col gap-4">
@@ -43,4 +43,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default About;
