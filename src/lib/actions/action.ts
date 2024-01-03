@@ -56,10 +56,30 @@ export const deleteUser = async (formData: FormData) => {
     return { error: "Something went wrong!" };
   }
 };
-export const loginUsingGithub=async ()=>{
-  await signIn("github")
-}
-export const loginUsingCredential=async (formData:FormData)=>{
+export const register = async (formData: FormData) => {
+  const { username, email, password } = Object.fromEntries(formData);
+  try {
+    ConnectToDb();
+    const user = await UserModel.findOne({ username });
+    if (user) {
+      return { error: "Username already exists" };
+    }
+    const newUser = new UserModel({
+      username,
+      email,
+      password,
+    });
+    await newUser.save();
+    return { success: true };
+  } catch (err) {
+    console.log(err);
+    return { error: "Something went wrong!" };
+  }
+};
+export const loginUsingGithub = async () => {
+  await signIn("github");
+};
+export const loginUsingCredential = async (formData: FormData) => {
   const { username, password } = Object.fromEntries(formData);
   try {
     await signIn("credentials", { username, password });
@@ -70,7 +90,7 @@ export const loginUsingCredential=async (formData:FormData)=>{
     }
     throw err;
   }
-}
-export const logOut=async ()=>{
+};
+export const logOut = async () => {
   await signOut();
-}
+};
