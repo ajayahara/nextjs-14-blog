@@ -59,6 +59,18 @@ export const deleteUser = async (formData: FormData) => {
 export const loginUsingGithub=async ()=>{
   await signIn("github")
 }
+export const loginUsingCredential=async (formData:FormData)=>{
+  const { username, password } = Object.fromEntries(formData);
+  try {
+    await signIn("credentials", { username, password });
+  } catch (err) {
+    console.log(err);
+    if (err?.message?.includes("CredentialsSignin")) {
+      return { error: "Invalid username or password" };
+    }
+    throw err;
+  }
+}
 export const logOut=async ()=>{
   await signOut();
 }

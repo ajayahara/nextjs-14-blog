@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 export const authConfig = {
   pages: {
     signIn: "/login",
@@ -26,7 +28,7 @@ export const authConfig = {
       if (isOnAdmin && !user?.isAdmin) return false;
       if (isOnBlog && !user) return false;
       if (isOnLogin && user)
-        return Response.redirect(new URL("/", request.nextUrl));
+        return NextResponse.redirect(new URL("/", request.nextUrl));
       return true;
     },
   },
